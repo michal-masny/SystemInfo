@@ -66,6 +66,7 @@ namespace SystemInfo
 
             //Create remote WMI scope and connect       
             ManagementScope scope = new ManagementScope();
+            //scope.Options.Timeout = TimeSpan.FromSeconds(21);
             try
             {
                 scope = new ManagementScope("\\\\" + computernameorip + "\\root\\cimv2");
@@ -86,7 +87,12 @@ namespace SystemInfo
                     EndTasks();
                     return;
                 }
-                else { MessageBox.Show("COM exception thrown while connecting to the host: " + ex.Message); return; }
+                else
+                {
+                    MessageBox.Show("COM exception thrown while connecting to the host: " + ex.Message);
+                    EndTasks();
+                    return;
+                }
             }
             catch (ManagementException ex)
             {
@@ -111,7 +117,17 @@ namespace SystemInfo
                 await Task.Run(() =>
                 {
                     //Query system for computer name
-                    computername = GetComputerName(scope);
+                    try
+                    {
+                        computername = GetComputerName(scope);
+                    }
+                    catch(Exception ex)
+                    {
+                        queryerrors = queryerrors + 
+                        "Unable to get the computer name.\r\nThe system error message was: " + ex.Message + 
+                        "\r\nError code: " + ex.HResult + "\r\n";
+                        computername = "";
+                    }
                     cts.Token.ThrowIfCancellationRequested();
 
                     //Query system for Operating System information
@@ -370,7 +386,7 @@ namespace SystemInfo
 
         private Tuple<string, string, string> GetSessionsInfo(ManagementScope scope)
         {
-            ObjectQuery queryLogonSession = new ObjectQuery("SELECT * FROM Win32_LogonSession where LogonType = 2 OR LogonType = 10 OR LogonType = 11");
+            ObjectQuery queryLogonSession = new ObjectQuery("SELECT * FROM Win32_LogonSession");
             ManagementObjectSearcher searcher = new ManagementObjectSearcher(scope, queryLogonSession);
             string interactivesessions = "";
             string cachedinteractivesessions = "";
@@ -466,7 +482,7 @@ namespace SystemInfo
                 userprofiles = userprofiles + "\r\n" + line;
                 ProfileListItem profilelistitem = new ProfileListItem
                 (
-                    profileName.ToString(),
+                    line,
                     m["SID"].ToString(),
                     ManagementDateTimeConverter.ToDateTime(m["LastUseTime"].ToString()).ToString()
                 );
@@ -588,7 +604,12 @@ namespace SystemInfo
             cbVPNInfo.Enabled = false;
             //Enable Cancel button
             btnCancelQuery.Enabled = true;
-
+            //Disable View Details buttons
+            btnProfileDetails.Enabled = false;
+            btnSessionDetails.Enabled = false;
+            //Create SessionsList and ProfilesList
+            SessionsList = new List<SessionListItem>();
+            ProfilesList = new List<ProfileListItem>();
             return;
         }
 
@@ -652,11 +673,11 @@ namespace SystemInfo
             cbSessionsInfo.Enabled = true;
             cbUserProfilesInfo.Enabled = true;
             cbVPNInfo.Enabled = true;
-            if ((!(String.IsNullOrEmpty(tbCachedInteractiveSessions.Text))) || (!(String.IsNullOrEmpty(tbRemoteInteractiveSessions.Text))) || (!(String.IsNullOrEmpty(tbInteractiveSessions.Text))))
+            if (SessionsList.Count > 0)
                 btnSessionDetails.Enabled = true;
             else
                 btnSessionDetails.Enabled = false;
-            if (!String.IsNullOrEmpty(tbUserProfiles.Text))
+            if (ProfilesList.Count > 0)
                 btnProfileDetails.Enabled = true;
             else
                 btnSessionDetails.Enabled = false;
@@ -670,8 +691,7 @@ namespace SystemInfo
             //check for errors and show in separate window if there have been any 
             if (!String.IsNullOrEmpty(queryerrors))
             {
-                QueryErrorsForm = new QueryErrors();
-                QueryErrorsForm.QueryErrorsText = queryerrors;
+                QueryErrorsForm = new QueryErrors(queryerrors);
                 QueryErrorsForm.Show();
             }
             return;

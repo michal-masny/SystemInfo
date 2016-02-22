@@ -245,9 +245,6 @@
             // cbOperatingSystemInfo
             // 
             this.cbOperatingSystemInfo.AutoSize = true;
-            this.cbOperatingSystemInfo.Checked = true;
-            this.cbOperatingSystemInfo.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.cbOperatingSystemInfo.Enabled = false;
             this.cbOperatingSystemInfo.Location = new System.Drawing.Point(281, 128);
             this.cbOperatingSystemInfo.Name = "cbOperatingSystemInfo";
             this.cbOperatingSystemInfo.Size = new System.Drawing.Size(15, 14);
@@ -257,8 +254,6 @@
             // cbComputerInfo
             // 
             this.cbComputerInfo.AutoSize = true;
-            this.cbComputerInfo.Checked = true;
-            this.cbComputerInfo.CheckState = System.Windows.Forms.CheckState.Checked;
             this.cbComputerInfo.Location = new System.Drawing.Point(281, 218);
             this.cbComputerInfo.Name = "cbComputerInfo";
             this.cbComputerInfo.Size = new System.Drawing.Size(15, 14);
@@ -268,8 +263,6 @@
             // cbInternetExplorerInfo
             // 
             this.cbInternetExplorerInfo.AutoSize = true;
-            this.cbInternetExplorerInfo.Checked = true;
-            this.cbInternetExplorerInfo.CheckState = System.Windows.Forms.CheckState.Checked;
             this.cbInternetExplorerInfo.Location = new System.Drawing.Point(281, 285);
             this.cbInternetExplorerInfo.Name = "cbInternetExplorerInfo";
             this.cbInternetExplorerInfo.Size = new System.Drawing.Size(15, 14);
@@ -279,8 +272,6 @@
             // cbAdministratorsInfo
             // 
             this.cbAdministratorsInfo.AutoSize = true;
-            this.cbAdministratorsInfo.Checked = true;
-            this.cbAdministratorsInfo.CheckState = System.Windows.Forms.CheckState.Checked;
             this.cbAdministratorsInfo.Location = new System.Drawing.Point(281, 329);
             this.cbAdministratorsInfo.Name = "cbAdministratorsInfo";
             this.cbAdministratorsInfo.Size = new System.Drawing.Size(15, 14);
@@ -346,8 +337,6 @@
             // cbSessionsInfo
             // 
             this.cbSessionsInfo.AutoSize = true;
-            this.cbSessionsInfo.Checked = true;
-            this.cbSessionsInfo.CheckState = System.Windows.Forms.CheckState.Checked;
             this.cbSessionsInfo.Location = new System.Drawing.Point(591, 128);
             this.cbSessionsInfo.Name = "cbSessionsInfo";
             this.cbSessionsInfo.Size = new System.Drawing.Size(15, 14);
@@ -428,8 +417,6 @@
             // cbVPNInfo
             // 
             this.cbVPNInfo.AutoSize = true;
-            this.cbVPNInfo.Checked = true;
-            this.cbVPNInfo.CheckState = System.Windows.Forms.CheckState.Checked;
             this.cbVPNInfo.Location = new System.Drawing.Point(591, 351);
             this.cbVPNInfo.Name = "cbVPNInfo";
             this.cbVPNInfo.Size = new System.Drawing.Size(15, 14);
@@ -474,8 +461,6 @@
             // cbUserProfilesInfo
             // 
             this.cbUserProfilesInfo.AutoSize = true;
-            this.cbUserProfilesInfo.Checked = true;
-            this.cbUserProfilesInfo.CheckState = System.Windows.Forms.CheckState.Checked;
             this.cbUserProfilesInfo.Location = new System.Drawing.Point(591, 285);
             this.cbUserProfilesInfo.Name = "cbUserProfilesInfo";
             this.cbUserProfilesInfo.Size = new System.Drawing.Size(15, 14);

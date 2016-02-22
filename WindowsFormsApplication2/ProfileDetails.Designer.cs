@@ -39,16 +39,15 @@
             this.dgvProfileDetails.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvProfileDetails.Location = new System.Drawing.Point(0, 0);
             this.dgvProfileDetails.Name = "dgvProfileDetails";
-            this.dgvProfileDetails.Size = new System.Drawing.Size(528, 187);
+            this.dgvProfileDetails.Size = new System.Drawing.Size(574, 187);
             this.dgvProfileDetails.TabIndex = 0;
             // 
             // ProfileDetails
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(528, 187);
+            this.ClientSize = new System.Drawing.Size(574, 187);
             this.Controls.Add(this.dgvProfileDetails);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "ProfileDetails";

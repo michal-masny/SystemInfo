@@ -13,10 +13,10 @@ namespace SystemInfo
     public partial class QueryErrors : Form
     {
         public string QueryErrorsText;
-        public QueryErrors()
+        public QueryErrors(string queryerrorstext)
         {
             InitializeComponent();
-            tbQueryErrors.Text = QueryErrorsText;
+            tbQueryErrors.Text = queryerrorstext;
         }
     }
 }

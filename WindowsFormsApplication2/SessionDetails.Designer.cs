@@ -39,7 +39,7 @@
             this.dgvSessionDetails.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvSessionDetails.Location = new System.Drawing.Point(0, 0);
             this.dgvSessionDetails.Name = "dgvSessionDetails";
-            this.dgvSessionDetails.Size = new System.Drawing.Size(390, 186);
+            this.dgvSessionDetails.Size = new System.Drawing.Size(442, 186);
             this.dgvSessionDetails.TabIndex = 0;
             // 
             // SessionDetails
@@ -47,9 +47,8 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
-            this.ClientSize = new System.Drawing.Size(390, 186);
+            this.ClientSize = new System.Drawing.Size(442, 186);
             this.Controls.Add(this.dgvSessionDetails);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "SessionDetails";
